@@ -48,7 +48,8 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
+		// Comprobar invariantes
+		checkInvariante();
 		
 		
 		// TODO
@@ -71,6 +72,9 @@ public class Parque implements IParque{
 		
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Salida");
+		
+		// Comprobar invariantes
+		checkInvariante();
 		
 	}
 	
