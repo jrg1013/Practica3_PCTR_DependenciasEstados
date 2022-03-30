@@ -44,8 +44,8 @@ public class ActividadSalidaPuerta implements Runnable{
 	public void run() {
 		for (int i = 0; i < NUMSALIDAS; i ++) {
 			try {
-				parque.salirDelParque(puerta);
 				TimeUnit.MILLISECONDS.sleep(new Random().nextInt(5)*1000);
+				parque.salirDelParque(puerta);
 			} catch (InterruptedException e) {
 				Logger.getGlobal().log(Level.INFO, "Salida interrumpida");
 				Logger.getGlobal().log(Level.INFO, e.toString());
