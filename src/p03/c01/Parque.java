@@ -18,7 +18,9 @@ import java.util.Hashtable;
 public class Parque implements IParque{
 
 
-	// TODO 
+	// TODO
+	private static final int CAPACIDAD_MAXIMA = 5;
+		
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	
@@ -38,7 +40,8 @@ public class Parque implements IParque{
 		}
 		
 		// TODO
-				
+		// Comprobar antes de entrar
+		comprobarAntesDeEntrar();		
 		
 		// Aumentamos el contador total y el individual
 		contadorPersonasTotales++;		
@@ -63,7 +66,8 @@ public class Parque implements IParque{
 		}
 		
 		// TODO
-				
+		// Comprobar antes de salir
+		comprobarAntesDeSalir();		
 		
 		// Decrementamos el contador total y el individual
 		contadorPersonasTotales--;		
@@ -119,25 +123,40 @@ public class Parque implements IParque{
 		
 		assert sumarContadoresPuerta() >= 0: "INV: La suma de personas en el parque no puede ser negativa.";
 		
-		for(Entry<String, Integer> e: contadoresPersonasPuerta.entrySet()) {
-			assert e.getValue() >= 0 : "INV: No pueden haber salido más personas de las que han entrado por una puerta."; 
-		}
-		
-		// PODRÍAMOS LIMITAR EL AFORO DEL PARQUE Y TENERLO EN CUENTA COMO UN INVARIANTE ADICIONAL.
+		assert sumarContadoresPuerta() <= CAPACIDAD_MAXIMA: "INV: No se puede sobrepasar la capacidad máxima del parque.";
+
 	}
 	
-
+	
+	/**
+	 * Comprobación que se realiza antes de entrar al parque.
+	 */
 	protected void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
+		while(contadorPersonasTotales==CAPACIDAD_MAXIMA) {
+			try {
+				System.err.println("He intentado entrar pero tengo que esperar");
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		notify();
 	}
 
 
+	/**
+	 * Comprobación que se realiza antes de salir del parque.
+	 */
 	protected void comprobarAntesDeSalir(){		// TODO
-		//
-		// TODO
-		//
+		while(contadorPersonasTotales==0) {
+			try {
+				System.err.println("He intentado salir pero tengo que esperar");
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		notify();
 	}
 
 
