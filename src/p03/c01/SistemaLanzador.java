@@ -1,6 +1,23 @@
 package src.p03.c01;
 
+/**
+ * Clase que contiene el main() para lanzar los hilos. 
+ * 
+ * @author Carlos López Nozal
+ * @author José Antonio Barbero Aparicio
+ * @author José Redondo Guerra
+ * @author Rodrigo Merino Tovar
+ * 
+ * @version 1.0
+ * @since 1.0
+ */
 public class SistemaLanzador {
+	
+	/**
+	 * main().
+	 * 
+	 * @param args Entrada por línea de comandos (asumiremos que args[0]==2)
+	 */
 	public static void main(String[] args) {
 		
 		IParque parque = new Parque(); // TODO
