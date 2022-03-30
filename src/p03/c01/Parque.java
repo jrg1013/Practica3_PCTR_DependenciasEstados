@@ -112,19 +112,24 @@ public class Parque implements IParque{
 	 * Comprobación de invariantes.
 	 */
 	protected void checkInvariante() {
-		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
-		// TODO 
-		// TODO
+		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parque";
 		
+		assert sumarContadoresPuerta() >= 0: "INV: La suma de personas en el parque no puede ser negativa.";
 		
+		for(Entry<String, Integer> e: contadoresPersonasPuerta.entrySet()) {
+			assert e.getValue() >= 0 : "INV: No pueden haber salido más personas de las que han entrado por una puerta."; 
+		}
 		
+		// PODRÍAMOS LIMITAR EL AFORO DEL PARQUE Y TENERLO EN CUENTA COMO UN INVARIANTE ADICIONAL.
 	}
+	
 
 	protected void comprobarAntesDeEntrar(){	// TODO
 		//
 		// TODO
 		//
 	}
+
 
 	protected void comprobarAntesDeSalir(){		// TODO
 		//
