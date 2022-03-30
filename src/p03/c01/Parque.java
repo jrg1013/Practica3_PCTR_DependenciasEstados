@@ -3,6 +3,18 @@ package src.p03.c01;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+/**
+ * Objeto pasivo que será el recurso compartido por las diferentes
+ * actividades. 
+ * 
+ * @author Carlos López Nozal
+ * @author José Antonio Barbero Aparicio
+ * @author José Redondo Guerra
+ * @author Rodrigo Merino Tovar
+ * 
+ * @version 1.0
+ * @since 1.0
+*/
 public class Parque implements IParque{
 
 
@@ -63,6 +75,12 @@ public class Parque implements IParque{
 	}
 	
 	
+	/**
+	 * Mostrar por pantalla los estados del parque y las diferentes puertas.
+	 * 
+	 * @param puerta Nombre de la puerta por la que se entra o se sale.
+	 * @param movimiento Nombre del movimiento que se realiza (entrar o salir)
+	 */
 	private void imprimirInfo (String puerta, String movimiento){
 		System.out.println(movimiento + " por puerta " + puerta);
 		System.out.println("--> Personas en el parque " + contadorPersonasTotales); //+ " tiempo medio de estancia: "  + tmedio);
@@ -74,6 +92,12 @@ public class Parque implements IParque{
 		System.out.println(" ");
 	}
 	
+	
+	/**
+	 * Sumar los contadores de todas las puertas. 
+	 * 
+	 * @return sumaContadoresPuerta Suma de los contadores de todas las puertas.
+	 */
 	private int sumarContadoresPuerta() {
 		int sumaContadoresPuerta = 0;
 			Enumeration<Integer> iterPuertas = contadoresPersonasPuerta.elements();
@@ -83,6 +107,10 @@ public class Parque implements IParque{
 		return sumaContadoresPuerta;
 	}
 	
+	
+	/**
+	 * Comprobación de invariantes.
+	 */
 	protected void checkInvariante() {
 		assert sumarContadoresPuerta() == contadorPersonasTotales : "INV: La suma de contadores de las puertas debe ser igual al valor del contador del parte";
 		// TODO 
